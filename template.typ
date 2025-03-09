@@ -14,7 +14,8 @@
     number-align: start,
     flipped: true
   )
-  set text(font: "Libertinus Serif", lang: "es")
+  
+  set text(font: "Arial", lang: "es", size: 10pt)
   
   // Title row.
   align(center)[
