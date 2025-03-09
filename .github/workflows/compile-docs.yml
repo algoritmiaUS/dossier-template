@@ -13,3 +13,12 @@ jobs:
       - run: typst compile --font-path . --input language=python main.typ output/python.pdf && echo "Python PDF generado"
       - run: typst compile --font-path . --input language=cpp main.typ output/cpp.pdf && echo "C++ PDF generado"
       - run: typst compile --font-path . --input language=java main.typ output/java.pdf && echo "Java PDF generado"
+
+      # Subir los archivos generados al repositorio
+      - name: Subir archivos generados
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git commit -m "Actualizar PDFs generados"
+          git push
