@@ -1,6 +1,4 @@
 #import "template.typ": dossier 
-// Take a look at the file `template.typ` in the file panel
-// to customize this template and discover how it works.
 
 #show: dossier.with(
   university: "Universidad de Sevilla",
@@ -14,15 +12,13 @@
   num_cols:3
 )
 
-#let language = "python" //Puedes cambiar por 
-
-// Lógica condicional para mostrar contenido del módulo
-#if language == "python" {
-  include "python.typ"
-} else if language == "kotlin" {
-  include "kotlin.typ"
-} else if language == "cpp" {
-  include "cpp.typ"
-} else {
-  [Error: Tienes que poner un nombre válido.]
+// https://forum.typst.app/t/can-i-configure-my-document-e-g-draft-release-version-color-theme-when-creating-a-pdf-without-modifying-the-typst-file-directly/160
+#let language = {
+  let valid-values = ("python", "cpp", "java", "kotlin")
+  let value = sys.inputs.at("language", default: "python") // CAMBIAR LENGUAJE AQUÍ
+                                                           // PARA VISUALIZACIÓN
+  assert(value in valid-values, message: "`--input language` must be in {valid-values}")
+  value
 }
+
+#include "templates/"+language+".typ"
