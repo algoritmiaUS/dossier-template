@@ -15,10 +15,13 @@ jobs:
       - run: typst compile --font-path . --input language=java main.typ output/java.pdf && echo "Java PDF generado"
 
       # Subir los archivos generados al repositorio
+      # Subir los archivos generados al repositorio
       - name: Subir archivos generados
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin  # Asegurarse de tener la última versión de la rama
+          git checkout ${{ github.ref_name }}  # Cambiar a la rama actual
           git add output/
           git commit -m "Actualizar PDFs generados"
-          git push
+          git push origin ${{ github.ref_name }}
