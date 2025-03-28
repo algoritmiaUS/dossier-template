@@ -1,47 +1,54 @@
 // Plantilla Python
-// Contribuidores
-// Kenny Jesús Flores Huamán
+// Contribuidores:
+// Kenny Jesús Flores Huamán, Pablo Dávila Herrero
+
 
 = Setup
 
 Al trabajar en la terminal de Linux, existen tres métodos principales para ejecutar los programas asociados a los problemas. Estos métodos facilitan la interacción con los archivos de entrada y salida, optimizando el flujo de trabajo. A continuación, se describen estas opciones y se ejemplifican en detalle.
 
+
 == Lectura de números enteros
 Ejemplo: El programa ```problema.py``` recibe un número seguido de una lista de enteros y devuelve la suma de todos los elementos de la lista.
 
 - (Opción 1) Escribir los valores de entrada a mano, esto ejecuta el programa y escribe los datos directamente en la terminal.
-```bash
-$ python3 problema.py
-# Ejemplo:
-# Input:
-# 3
-# 10 20 30
-# Output:
-# 60
-``` 
+
+  ```bash
+  $ python3 problema.py
+  # Ejemplo:
+  # Input:
+  # 3
+  # 10 20 30
+  # Output:
+  # 60
+  ``` 
 
 - (Opción 2) Hacer uso de una tubería, esto pasa el contenido de un archivo como entrada al programa utilizando una tubería.
 
-```bash
-$ cat input.txt | python3 problema.py
-# Ejemplo:
-# input.txt contiene:
-# 3
-# 10 20 30
-# Output:
-# 60
-```
+  ```bash
+  $ cat input.txt | python3 problema.py
+  # Ejemplo:
+  # input.txt contiene:
+  # 3
+  # 10 20 30
+  # Output:
+  # 60
+  ```
+
 - (Opción 3) Ejecutar el programa con entrada desde un archivo y guardar la salida en otro archivo
-```bash
-$ python3 problema.py < input.txt > output.txt
-# Ejemplo:
-# input.txt contiene:
-# 3
-# 10 20 30
-# Después de ejecutar:
-# output.txt contendrá:
-# 60
-```
+
+  ```bash
+  $ python3 problema.py < input.txt > output.txt
+  # Ejemplo:
+  # input.txt contiene:
+  # 3
+  # 10 20 30
+  # Después de ejecutar:
+  # output.txt contendrá:
+  # 60
+  ```
+
+
 == Ajuste del Limite de Recursión
 
 En problemas de programación competitiva, es común trabajar con algoritmos recursivos. Sin embargo, Python establece un límite predeterminado en la profundidad de recursión (por defecto 1000) para evitar desbordamientos de pila (stack overflow).
@@ -53,11 +60,12 @@ import sys
 sys.setrecursionlimit(300001)
 ```
 
-Consideraciones importantes
+Consideraciones importantes:
 
 - Uso Responsable: Aumentar el límite de recursión puede causar un mayor consumo de memoria y potencialmente llevar a errores si la pila del sistema no puede manejar la carga.
 - Problemas Comunes: Si el programa lanza un error del tipo `RecursionError: maximum recursion depth exceeded`, esto indica que se alcanzó el límite actual.
 - Límite Recomendado: En la mayoría de los problemas competitivos, un valor de `10**6` suele ser suficiente, pero esto depende del problema y del entorno en el que se ejecute
+
 
 == Optimización de entrada
 
@@ -67,22 +75,26 @@ Reemplazamos ```input``` por ```sys.stdin.readline``` para mejorar la velocidad 
 import sys
 input = sys.stdin.readline
 
-#Ejemplo de uso:
+# Ejemplo de uso:
 
 # Leer una línea de entrada y eliminar el salto de línea
 n = int(input().strip())  # Usamos strip() para eliminar el salto de línea adicional
 ```
+
 Consideraciones:
-- ```sys.stdin.readline()``` lee la línea completa, por lo que se usa strip() para quitar el salto de línea.
-- ```sys.stdin.readline()``` devuelve una cadena, por lo que hay que convertirla a otros tipos manualmente.
+- `sys.stdin.readline()` lee la línea completa, por lo que se usa strip() para quitar el salto de línea.
+- `sys.stdin.readline()` devuelve una cadena, por lo que hay que convertirla a otros tipos manualmente.
+
 
 = Estructuras de Datos
+
 
 == Listas
 
 Las listas en Python son dinámicas y versátiles. Son ideales para almacenar secuencias de elementos.
 
-Operaciones comunes
+Operaciones comunes:
+
 ```py
 # Crear una lista
 arr = [1, 2, 3, 4, 5]
@@ -101,6 +113,7 @@ arr.pop(2)     # arr = [1, 2, 4, 5]
 if 4 in arr:
     print("4 está en la lista")
 ```
+
 
 == Pilas (Stacks)
 
@@ -123,6 +136,7 @@ if stack:
     print(stack[-1])  # Output: 1
 ```
 
+
 == Colas (Queues)
 
 Una cola es una estructura FIFO (First In, First Out). Para eficiencia, usa deque de la librería ```collections```.
@@ -144,9 +158,10 @@ if queue:
     print(queue[0])  # Output: 2
 ```
 
+
 == Sets
 
-Almacenan los elementos únicos y permiten operaciones de búsqueda e inserción eficientes
+Almacenan los elementos únicos y permiten operaciones de búsqueda e inserción eficientes.
 
 ```py
 s = set()
@@ -161,8 +176,8 @@ s.remove(1)  # s = {2}
 # Búsqueda O(1)
 if 2 in s:
     print("2 está en el conjunto")
-
 ```
+
 
 == Diccionarios
 
@@ -184,17 +199,19 @@ del d["a"]  # d = {"b": 2}
 # Búsqueda O(1)
 if "b" in d:
     print("b está en el diccionario")
-
 ```
+
 
 == Heap (Colas de prioridad)
 
-Un heap es una estructura que permite obtener el elemento mínimo o máximo eficientemente. En Python, se usa la librería ```heapq```.
+Es una estructura que permite obtener el elemento mínimo o máximo eficientemente. En Python, se utiliza la librería ```heapq```.
 
 Operaciones comunes:
+
 - Push: O(log n)
 - Pop: O(log n)
 - Top: O(1)
+
 ```python
 import heapq
 
@@ -211,14 +228,15 @@ print(heap[0])  # Output: 1
 
 # Eliminar el elemento mínimo
 top = heapq.heappop(heap)  # top = 1, heap = [2, 3]
-
 ```
 
-== Cola Doble (Deque)
+
+== Cola doblemente enlazada (Deque)
 
 Un deque permite operaciones eficientes en ambos extremos. Es útil para problemas de ventanas deslizantes o BFS.
 
 Operaciones comunes:
+
 ```python
 from collections import deque
 
@@ -233,11 +251,13 @@ front = dq.popleft()  # front = 2, dq = [1]
 back = dq.pop()       # back = 1, dq = []
 ```
 
+
 == Counter
 
-Counter de la librería ```collections```es útil para contar frecuencias de elementos en una lista.
+Esta clase de la librería `collections` es útil para contar frecuencias de elementos en una lista. Por lo demás se comporta como un diccionario.
 
 Operaciones comunes:
+
 ```py
 from collections import Counter
 
@@ -251,11 +271,13 @@ print(counter)  # Output: Counter({3: 3, 2: 2, 1: 1})
 print(counter[2])  # Output: 2
 ```
 
+
 == Segment Tree
 
 Es una estructura empleada para optimizar operaciones sobre rangos (segmentos) de un array.
 
 // Hay que modificar las cosas que son necesarias
+
 ```py
 class Node(object):
     def __init__(self, start, end):
@@ -323,6 +345,7 @@ class SegmentTree(object):
 
 = Algoritmos de Búsqueda y ordenamiento
 
+
 == Búsqueda binaria
 
 Busca en una lista ordenada dividiéndola a la mitad en cada paso. La complejidad en tiempo es de O(log n).
@@ -346,11 +369,12 @@ arr = [1, 3, 5, 7, 9]
 print(binary_search(arr, 5))  # Output: 2
 ```
 
+
 == Algoritmo sorted de Python
 
 El método sorted en Python es una función incorporada que ordena cualquier iterable (listas, tuplas, etc.) y devuelve una nueva lista ordenada. Internamente, utiliza una combinación de algoritmos eficientes, como Timsort (un híbrido de Merge Sort e Insertion Sort), que garantiza un rendimiento óptimo en la mayoría de los casos. La complejidad en tiempo en el peor de los casos es O(n log n).
 
-```
+```python
 # Lista de ejemplo
 arr = [3, 1, 4, 1, 5, 9, 2, 6, 5]
 
@@ -371,102 +395,184 @@ print("Ordenado por longitud:", sorted_words)
 people = [("Alice", 25), ("Bob", 20), ("Charlie", 30)]
 sorted_people = sorted(people, key=lambda x: x[1])  # Ordenar por edad
 print("Ordenado por edad:", sorted_people)
-
 ```
 
 
 = Grafos
 
-== Clase Grafos
+Un grafo G=(V,E) es sencillamente, un conjunto de vértices V y aristas (E, que almacena la información de conectividad entre los vértices en V).
 
-// Sacado del libro: Competitive Programming in Python: 128 Algorithms to Develop Your Coding Skills (Capitulo 6.1)
+== Lectura de Grafos
 
-```py
-class Graph:
-    def __init__(self):
-        self.neighbors = []
-        self.name2node = {}
-        self.node2name = []
-        self.weight = []
-
-    def __len__(self):
-        return len(self.node2name)
-
-    def __getitem__(self, v):
-        return self.neighbors[v]
-
-    def add_node(self, name):
-        assert name not in self.name2node
-        self.name2node[name] = len(self.name2node)
-        self.node2name.append(name)
-        self.neighbors.append([])
-        self.weight.append({})
-        return self.name2node[name]
-
-    def add_edge(self, name_u, name_v, weight_uv=None):
-        self.add_arc(name_u, name_v, weight_uv)
-        self.add_arc(name_v, name_u, weight_uv)
-
-    def add_arc(self, name_u, name_v, weight_uv=None):
-        u = self.name2node[name_u]
-        v = self.name2node[name_v]
-        self.neighbors[u].append(v)
-        self.weight[u][v] = weight_uv
-
-```
-
-== Búsqueda en Profundidad (DFS)
-// Sacado del libro: Competitive Programming in Python: 128 Algorithms to Develop Your Coding Skills (Capitulo 6.3)
-Recorre todos los nodos de un grafo o árbol en profundidad.
+Existen diferentes estructuras de datos para almacenar grafos, no obstante, la más empleada es la lista de Adyacencia, que  abreviaremos como AL. En caso de ver la nomenclatura AM, nos estamos refiriendo a la matriz de adyacencia.
 
 ```python
-def dfs_iterative(graph, start, seen):
-    seen[start] = True
-    to_visit = [start]
-    while to_visit:
-        node = to_visit.pop()
-        for neighbor in graph[node]:
-            if not seen[neighbor]:
-                seen[neighbor] = True
-                to_visit.append(neighbor)
+import sys
+input = sys.stdin.readline
+def leer_grafo_dirigido_ponderado(V, E):
+    """Lee un grafo dirigido y ponderado."""
+    AL = [[] for _ in range(V)]
+    for _ in range(E):
+        u, v, w = map(int, sys.stdin.readline().split())
+        AL[u].append((v, w))  # Solo dirección u -> v con peso w
+    return AL
 
+def leer_grafo_dirigido_no_ponderado(V, E):
+    """Lee un grafo dirigido y no ponderado."""
+    AL = [[] for _ in range(V)]
+    for _ in range(E):
+        u, v = map(int, sys.stdin.readline().split())
+        AL[u].append(v)  # Solo dirección u -> v sin peso
+    return AL
+
+def leer_grafo_no_dirigido_ponderado(V, E):
+    """Lee un grafo no dirigido y ponderado."""
+    AL = [[] for _ in range(V)]
+    for _ in range(E):
+        u, v, w = map(int, sys.stdin.readline().split())
+        AL[u].append((v, w))  # u -> v con peso w
+        AL[v].append((u, w))  # v -> u con peso w
+    return AL
+
+def leer_grafo_no_dirigido_no_ponderado(V, E):
+    """Lee un grafo no dirigido y no ponderado."""
+    AL = [[] for _ in range(V)]
+    for _ in range(E):
+        u, v = map(int, sys.stdin.readline().split())
+        AL[u].append(v)  # u -> v sin peso
+        AL[v].append(u)  # v -> u sin peso
+    return AL
 ```
 
-== Búsqueda en Amplitud (BFS)
-// Sacado del libro: Competitive Programming in Python: 128 Algorithms to Develop Your Coding Skills (Capitulo 6.4)
 
-Recorre todos los nodos de un grafo o árbol nivel por nivel.
+== Algoritmo de Dijkstra
 
-```py
-from collections import deque
+// Sacado de https://github.com/stevenhalim/cpbook-code/blob/master/ch4/sssp/dijkstra.py
 
-def bfs(graph, start=0):
-    to_visit = deque()
-    dist = [float('inf')] * len(graph)
-    prec = [None] * len(graph)
-    dist[start] = 0
-    to_visit.appendleft(start)
+Se utiliza para encontrar el camino más corto desde un nodo de inicio hasta todos los demás nodos en un grafo ponderado, con el objetivo de resolver problemas como rutas más eficientes en redes, mapas de carreteras o en la optimización de costos de conexión.
+
+```python
+from heapq import heappush, heappop
+
+
+def dijkstra(
+    al: dict[int, set[tuple[int, int]]],
+    s: int,
+):
+    """ 
+    Ejecuta Dijkstra desde el nodo `s` en un grafo
+    con lista de adyacencias `al`.
+    """
+
+    dist = [float("inf")] * len(al)
+    dist[s] = 0
+    pq = [(0, s)]
+    while 0 < len(pq):
+        d, u = heappop(pq) 
+
+        if d > dist[u]:
+            continue 
     
-    while to_visit:
-        node = to_visit.pop()
-        for neighbor in graph[node]:
-            if dist[neighbor] == float('inf'):
-                dist[neighbor] = dist[node] + 1
-                prec[neighbor] = node
-                to_visit.appendleft(neighbor)
+        for v, w in al[u]:
+            if dist[u] + w < dist[v]:  
+                dist[v] = dist[u] + w
+                heappush(pq, (dist[v], v))
     
-    return dist, prec
+    return dist
 ```
-// == Bellman-ford
 
-// == Floyd-Washall
+
+== Algoritmo de Floyd-Warshall
+
+Es útil cuando necesitas calcular las distancias más cortas entre todos los pares de vértices en un grafo. En general no es buena idea utilizarlo cuando $450 < |V|$.
+
+```python
+import sys
+
+input = sys.stdin.readline
+
+
+def leer_grafo_floyd(n: int, e: int):
+    am = [
+        [float("inf") for _ in range(n)]
+        for _ in range(n)
+    ]
+    for u in range(n):
+        am[u][u] = 0
+    for _ in range(e):
+        u, v, w = map(int, input().split())
+        # Se guarda la menor distancia si hay
+        # aristas repetidas
+        am[u][v] = min(am[u][v], w)
+    return am
+
+
+def floyd_warshall(am: list[list[int]], n: int):
+    """Careful! This modifies am."""
+
+    for k in range(n):
+        for u in range(n): 
+            for v in range(n):
+                am[u][v] = min(
+                    am[u][v],
+                    am[u][k] + am[k][v]
+                )
+    return am
+```
+
+
+// == Búsqueda en Profundidad (DFS)
+// // Sacado del libro: Competitive Programming in Python: 128 Algorithms to Develop Your Coding Skills (Capitulo 6.3)
+// Recorre todos los nodos de un grafo o árbol en profundidad.
+
+// ```python
+// def dfs_iterative(graph, start, seen):
+//     seen[start] = True
+//     to_visit = [start]
+//     while to_visit:
+//         node = to_visit.pop()
+//         for neighbor in graph[node]:
+//             if not seen[neighbor]:
+//                 seen[neighbor] = True
+//                 to_visit.append(neighbor)
+
+// ```
+
+// == Búsqueda en Amplitud (BFS)
+// // Sacado del libro: Competitive Programming in Python: 128 Algorithms to Develop Your Coding Skills (Capitulo 6.4)
+
+// Recorre todos los nodos de un grafo o árbol nivel por nivel.
+
+// ```py
+// from collections import deque
+
+// def bfs(graph, start=0):
+//     to_visit = deque()
+//     dist = [float('inf')] * len(graph)
+//     prec = [None] * len(graph)
+//     dist[start] = 0
+//     to_visit.appendleft(start)
+    
+//     while to_visit:
+//         node = to_visit.pop()
+//         for neighbor in graph[node]:
+//             if dist[neighbor] == float('inf'):
+//                 dist[neighbor] = dist[node] + 1
+//                 prec[neighbor] = node
+//                 to_visit.appendleft(neighbor)
+    
+//     return dist, prec
+// ```
+
 
 == Flujo máximo
 
+// TODO Dar pistas de cómo utilizar esto. El formato de entrada de las funciones, etc.
+
 ```py
 from collections import deque
 
-def bfs(capacity, source, sink, parent):
+def _bfs(capacity, source, sink, parent):
     queue = deque([source])
     visited = set([source])
     while queue:
@@ -485,7 +591,7 @@ def edmonds_karp(capacity, source, sink):
     n = len(capacity)
     parent = [-1] * n
 
-    while bfs(capacity, source, sink, parent):
+    while _bfs(capacity, source, sink, parent):
         path_flow = float('inf')
         v = sink
         while v != source:
@@ -506,27 +612,28 @@ def edmonds_karp(capacity, source, sink):
 ```
 
 
-
 = Matemáticas
 
 
-== Algoritmo de Euclides (GCD)
+== Máximo común divisor (GCD)
 
-//Sacado de https://cp-algorithms.com/algebra/euclid-algorithm.html
-
-Algoritmo para calcular el máximo común divisor
+Python trae una función para calcular el máximo común divisor de forma eficiente.
 
 ```py
-def gcd(a, b):
-    return a if b==0 else gcd(b,a%b)
+import math
+
+math.gcd(a, b, c)
 ```
 
+
 == Mínimo común múltiplo (LCM)
-// Sacado de https://cp-algorithms.com/algebra/euclid-algorithm.html
+
+Python trae una función para calcular el mínimo común múltiplo de forma eficiente.
 
 ```py
-def lcm(a, b):
-    return abs(a) // gcd(a, b) * abs(b)
+import math
+
+math.lcm(a, b, c)
 ```
 
 
@@ -535,6 +642,7 @@ def lcm(a, b):
 Algoritmo para generar números primos
 
 // Sacado de: https://community.lambdatest.com/t/how-can-i-optimize-the-sieve-of-eratosthenes-in-python-for-larger-limits/34557/3
+
 ```py
 def eratosthene(limit):
     primes = [2, 3, 5]
@@ -549,79 +657,35 @@ def eratosthene(limit):
     return [i for i in range(2, limit + 1) if sieve[i]]
 ```
 
+
 == Exponenciación rápida
+
 // Sacado del libro: Competitive Programming in Python: 128 Algorithms to Develop Your Coding Skills (Capitulo 14.4)
 
-Calcula $a^b mod q$ de manera eficiente O(log b).
+Calcula $a^b mod q$ de manera eficiente $O(log b)$. En Python ya está implementado.
 
 ```py
-def fast_exponentiation(a,b,q):
-    assert a >= 0 and b>=0 and q>=1
-    result = 1
-    while b:
-       if b%2==1:
-        result = (result * a) % q
-        a=(a*a)%q
-        b>>=1
-    return result
-
+pow(a, b, q)
 ```
+
 
 == Coeficientes binomiales
 
 // Sacado de: https://usaco.guide/gold/combo?lang=py
 
-El coeficiente binomial $mat(n ; k)$ representa el número de formas de elegir un subconjunto de k elementos de un conjunto de n elementos. Por ejemplo $mat(4 ; 2) = 6$ porque el conjunto ${1,2,3,4}$ tiene 6 subconjuntos de 2 elementos ${1,2},{1,3},{1,4},{2,3},{2,4},{3,4}$. Una de las formas más eficientes de calcular estos coeficientes es mediante la siguiente fórmula $mat(n ; k) = n! / (k!(n-k)!)$
-
+El coeficiente binomial $mat(n ; k)$ representa el número de formas de elegir un subconjunto de k elementos de un conjunto de $n$ elementos. Por ejemplo $mat(4 ; 2) = 6$ porque el conjunto ${1,2,3,4}$ tiene 6 subconjuntos de 2 elementos ${1,2},{1,3},{1,4},{2,3},{2,4},{3,4}$. Para calcular estos coeficientes se utiliza la fórmula $mat(n ; k) = n! / (k!(n-k)!)$. En Python ya está implementado.
 
 ```py
-MAXN = 10**6
+import math
 
-fac = [0] * (MAXN + 1)
-inv = [0] * (MAXN + 1)
-
-
-def exp(x: int, n: int, m: int) -> int:
-	""":return: x^n modulo m in O(log p) time."""
-	x %= m  # note: m * m must be less than 2^63 to avoid ll overflow
-	res = 1
-	while n > 0:
-		if n % 2 == 1:
-			res = (res * x) % m
-		x = (x * x) % m
-		n //= 2
-	return res
-
-
-def factorial(p: int):
-	"""Precomputes n! from 0 to MAXN."""
-	global fac
-	fac[0] = 1
-	for i in range(1, MAXN + 1):
-		fac[i] = (fac[i - 1] * i) % p
-
-
-def inverses(p: int):
-	"""
-	Precomputes all modular inverse factorials from 0 to MAXN in O(n + log p) time
-	"""
-	global inv
-	inv[MAXN] = exp(fac[MAXN], p - 2, p)
-	for i in range(MAXN, 0, -1):
-		inv[i - 1] = (inv[i] * i) % p
-
-
-def choose(n: int, r: int, p: int):
-	""":return: nCr mod p"""
-	return fac[n] * inv[r] % p * inv[n - r] % p
+math.comb(n, k)
 ```
-
 
 
 = Strings
 
-== Trie
 
+== Trie
 
 ```py
 class TrieNode:
@@ -656,7 +720,6 @@ class Trie:
                 return False
             node = node.children[char]
         return True
-
 ```
 
 // == Búsqueda de patrones
@@ -665,7 +728,9 @@ class Trie:
 
 // Para comparar strings eficientemente.
 
+
 =  Geometría
+
 
 == Clase Punto
 
@@ -673,6 +738,7 @@ class Trie:
 
 ```py
 import math
+
 
 class Pt:
     def __init__(self, x=0, y=0):
@@ -749,33 +815,39 @@ def cross(p, q):
     return p.x * q.y - p.y * q.x
 
 def collinear(a, b):
-    return cross(a, b) == 0  # Ver si dos puntos son colineales
+    """Ver si dos puntos son colineales"""
+    return cross(a, b) == 0
 
 def orient(a, b, c):
     return cross(b - a, c - a)
 
 def orientS(a, b, c):
-    return (orient(a, b, c) > 0) - (orient(a, b, c) < 0)  # Signo de la orientación
+    # Signo de la orientación
+    return (orient(a, b, c) > 0) - (orient(a, b, c) < 0)
 
 def cw(a, b, c, in_colli=False):
+    # Sentido horario
     o = orientS(a, b, c)
-    return o < 0 or (in_colli and o == 0)  # Sentido horario
+    return o < 0 or (in_colli and o == 0)
 
 def ccw(a, b, c, in_colli=False):
+    # Sentido antihorario
     o = orientS(a, b, c)
-    return o > 0 or (in_colli and o == 0)  # Sentido antihorario
+    return o > 0 or (in_colli and o == 0)
 
 def collinear_three(a, b, c):
-    return orient(a, b, c) == 0  # Ver si tres puntos están alineados
+    # Ver si tres puntos están alineados
+    return orient(a, b, c) == 0
 ```
+
 
 == Clase Línea
 
 // Traducción del código c++ perteneciente al chuletario que usan los de la UCM
 
-
 ```py
 import math
+
 
 class Line:
     def __init__(self, *args):
@@ -833,6 +905,7 @@ def dist_line_line(r, s):
         return dist(r.p, s.p)
     return 0  # Líneas que se intersectan
 ```
+
 
 == Clase Polígono
 
@@ -942,5 +1015,4 @@ class Poly:
 # Teorema de Pick
 def pick(I, B):
     return I - 1 + B * 0.5
-    
 ```
