@@ -7,8 +7,6 @@
 
 Al trabajar en la terminal de Linux, existen tres métodos principales para ejecutar los programas asociados a los problemas. Estos métodos facilitan la interacción con los archivos de entrada y salida, optimizando el flujo de trabajo. A continuación, se describen estas opciones y se ejemplifican en detalle.
 
-
-== Lectura de números enteros
 Ejemplo: El programa ```problema.py``` recibe un número seguido de una lista de enteros y devuelve la suma de todos los elementos de la lista.
 
 - (Opción 1) Escribir los valores de entrada a mano, esto ejecuta el programa y escribe los datos directamente en la terminal.
@@ -47,7 +45,15 @@ Ejemplo: El programa ```problema.py``` recibe un número seguido de una lista de
   # output.txt contendrá:
   # 60
   ```
+== Lectura para leer números enteros
 
+```python
+def leer_un_numero():
+    return int(input())
+
+def leer_varios_numeros():
+    return list(map(int, input().split()))
+```
 
 == Ajuste del Limite de Recursión
 
@@ -84,6 +90,20 @@ n = int(input().strip())  # Usamos strip() para eliminar el salto de línea adic
 Consideraciones:
 - `sys.stdin.readline()` lee la línea completa, por lo que se usa strip() para quitar el salto de línea.
 - `sys.stdin.readline()` devuelve una cadena, por lo que hay que convertirla a otros tipos manualmente.
+
+== Lectura indefinida usando try-except
+
+Cuando no sabemos cuántas líneas se leerán desde la entrada estándar y queremos procesarlas una por una hasta que se agoten, una forma común en Python es utilizar un bucle infinito y capturar la excepción EOFError.
+
+```python
+while True:
+    try:
+        linea = input()
+        # Escribir aquí el código
+    except EOFError:
+        break
+```
+
 
 
 = Estructuras de Datos
@@ -456,7 +476,7 @@ from heapq import heappush, heappop
 
 
 def dijkstra(
-    al: dict[int, set[tuple[int, int]]],
+    al: List[List[Tuple[int, int]]], s: int,
     s: int,
 ):
     """ 
