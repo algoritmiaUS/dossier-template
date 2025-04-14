@@ -740,6 +740,16 @@ class Trie:
                 return False
             node = node.children[char]
         return True
+
+    def print_trie(self, node=None, prefix=''):
+        '''Solo sirve de ayuda para visualizar el trie'''
+        if node is None:
+            node = self.root
+            
+        for char, child in sorted(node.children.items()):
+            marker = '*' if child.is_end_of_word else ''
+            print('  ' * len(prefix) + f'- {char}{marker}')
+            self.print_trie(child, prefix + char)
 ```
 
 // == Búsqueda de patrones
