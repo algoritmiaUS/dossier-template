@@ -91,20 +91,18 @@ Consideraciones:
 - `sys.stdin.readline()` lee la línea completa, por lo que se usa strip() para quitar el salto de línea.
 - `sys.stdin.readline()` devuelve una cadena, por lo que hay que convertirla a otros tipos manualmente.
 
-== Lectura indefinida usando try-except
+== Lectura indefinida
 
 Cuando no sabemos cuántas líneas se leerán desde la entrada estándar y queremos procesarlas una por una hasta que se agoten, una forma común en Python es utilizar un bucle infinito y capturar la excepción EOFError.
 
 ```python
-while True:
-    try:
-        linea = input()
-        # Escribir aquí el código
-    except EOFError:
-        break
+import sys
+
+for line in sys.stdin.readlines():
+     [x, y] = list(map(int, line.split()))
+     print(abs(x - y))
+     
 ```
-
-
 
 = Estructuras de Datos
 
