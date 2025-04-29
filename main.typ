@@ -9,13 +9,14 @@
     "Pablo Reina"
   ),
   date: datetime.today(),
-  num_cols:3
+  num_cols:2,
+  flipped:false // Indica si la orientación es vertical u horizontal
 )
 
 // https://forum.typst.app/t/can-i-configure-my-document-e-g-draft-release-version-color-theme-when-creating-a-pdf-without-modifying-the-typst-file-directly/160
 #let language = {
   let valid-values = ("python", "cpp", "java")
-  let value = sys.inputs.at("language", default: "python") // CAMBIAR LENGUAJE AQUÍ
+  let value = sys.inputs.at("language", default: "cpp") // CAMBIAR LENGUAJE AQUÍ
                                                            // PARA VISUALIZACIÓN
   assert(value in valid-values, message: "`--input language` must be in {valid-values}")
   value

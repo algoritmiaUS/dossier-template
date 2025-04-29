@@ -3,6 +3,7 @@
              members: (), 
              date:datetime.today(),
              num_cols:3,
+             flipped:false,
              body) = {
                
   // Set the document's basic properties.
@@ -12,7 +13,7 @@
     margin: 1cm,
     numbering: "1",
     number-align: start,
-    flipped: true
+    flipped: flipped
   )
   
   set text(font: "Arial", lang: "es", size: 10pt)
