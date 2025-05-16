@@ -259,6 +259,29 @@ print(heap[0])  # Output: 1
 top = heapq.heappop(heap)  # top = 1, heap = [2, 3]
 ```
 
+Implementación:
+
+```python
+from typing import Generic, TypeVar
+import heapq
+
+P = TypeVar('P')
+V = TypeVar('V')
+
+class PriorityQueue(Generic[P, V]):
+    def __init__(self):
+        self.elements: List[Tuple[P, V]] = []
+
+    def is_empty(self) -> bool:
+        return len(self.elements) == 0
+
+    def put(self, item: V, priority: P):
+        return heapq.heappush(self.elements, (priority, item))
+
+    def pop(self) -> V:
+        return heapq.heappop(self.elements)[1]
+```
+
 
 == Cola doblemente enlazada (Deque)
 
