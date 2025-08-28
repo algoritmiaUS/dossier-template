@@ -18,6 +18,6 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git fetch origin
           git checkout ${{ github.ref_name }}
-          git add output/
+          git add python.pdf cpp.pdf
           git commit -m "Actualizar PDFs generados"
           git push origin ${{ github.ref_name }}
