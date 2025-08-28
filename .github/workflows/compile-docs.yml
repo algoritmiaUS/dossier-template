@@ -8,20 +8,16 @@ jobs:
       - uses: typst-community/setup-typst@v4
         with:
           cache-dependency-path: requirements.typ
-      # Now Typst is installed and packages will be cached!
-      # https://forum.typst.app/t/how-can-i-create-multiple-pdfs-from-a-single-file/2619/3
-      - run: typst compile --input language=python docs/book/main.typ python.pdf && echo "Python PDF generado"
-      - run: typst compile --input language=cpp docs/book/main.typ cpp.pdf && echo "C++ PDF generado"
-      # - run: typst compile --font-path . --input language=java main.typ java.pdf && echo "Java PDF generado"
-
-      # Subir los archivos generados al repositorio
+      # Compilar PDFs indicando la raíz del proyecto
+      - run: typst compile --root . --input language=python docs/book/main.typ python.pdf && echo "Python PDF generado"
+      - run: typst compile --root . --input language=cpp docs/book/main.typ cpp.pdf && echo "C++ PDF generado"
       # Subir los archivos generados al repositorio
       - name: Subir archivos generados
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin  # Asegurarse de tener la última versión de la rama
-          git checkout ${{ github.ref_name }}  # Cambiar a la rama actual
+          git fetch origin
+          git checkout ${{ github.ref_name }}
           git add output/
           git commit -m "Actualizar PDFs generados"
           git push origin ${{ github.ref_name }}
