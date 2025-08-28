@@ -1,0 +1,52 @@
+Antes de enviar (Pre-submit)
+- Escribe algunos casos de prueba simples si las muestras no son suficientes.
+- ¿Los límites de tiempo están ajustados? Si es así, genera casos máximos.
+- ¿El uso de memoria está bien?
+- ¿Podría haber algún desbordamiento?
+- Asegúrate de enviar el archivo correcto.
+
+Respuesta incorrecta (Wrong answer)
+- ¡Imprime tu solución! Imprime también la salida de depuración.
+- ¿Estás limpiando todas las estructuras de datos entre casos de prueba?
+- ¿Tu algoritmo puede manejar todo el rango de entrada?
+- Lee de nuevo el enunciado completo del problema.
+- ¿Estás manejando correctamente todos los casos límite?
+- ¿Has entendido bien el problema?
+- ¿Alguna variable sin inicializar?
+- ¿Algún desbordamiento?
+- ¿Confusión entre N y M, i y j, etc.?
+- ¿Seguro de que tu algoritmo funciona?
+- ¿Qué casos especiales no has considerado?
+- ¿Seguro de que las funciones de la STL que usas funcionan como piensas?
+- Añade algunas aserciones, quizá vuelve a enviar.
+- Crea algunos casos de prueba para ejecutar tu algoritmo.
+- Recorre el algoritmo con un caso sencillo.
+- Vuelve a revisar esta lista.
+- Explica tu algoritmo a un compañero.
+- Pídele a tu compañero que revise tu código.
+- Da un pequeño paseo, por ejemplo al baño.
+- ¿El formato de salida es correcto? (incluyendo espacios en blanco)
+- Reescribe tu solución desde cero o deja que un compañero lo haga.
+
+Error en tiempo de ejecución (Runtime error)
+- ¿Has probado todos los casos límite de forma local?
+- ¿Alguna variable sin inicializar?
+- ¿Estás leyendo o escribiendo fuera del rango de algún vector?
+- ¿Alguna aserción que pueda fallar?
+- ¿Alguna posible división por 0? (por ejemplo mod 0)
+- ¿Alguna recursión infinita posible?
+- ¿Punteros o iteradores invalidados?
+- ¿Estás usando demasiada memoria?
+- Depura con reenvíos (por ejemplo, señales remapeadas, ver *Various*).
+
+Límite de tiempo excedido (Time limit exceeded)
+- ¿Tienes algún bucle infinito posible?
+- ¿Cuál es la complejidad de tu algoritmo?
+- ¿Estás copiando muchos datos innecesarios? (usa referencias)
+- ¿Qué tan grande es la entrada y la salida? (considera `scanf`)
+- Evita `vector`, `map`. (usa arreglos / `unordered_map`)
+- ¿Qué opinan tus compañeros sobre tu algoritmo?
+
+Límite de memoria excedido (Memory limit exceeded)
+- ¿Cuál es la cantidad máxima de memoria que debería necesitar tu algoritmo?
+- ¿Estás limpiando todas las estructuras de datos entre casos de prueba?

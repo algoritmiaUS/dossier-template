@@ -10,9 +10,9 @@ jobs:
           cache-dependency-path: requirements.typ
       # Now Typst is installed and packages will be cached!
       # https://forum.typst.app/t/how-can-i-create-multiple-pdfs-from-a-single-file/2619/3
-      - run: typst compile --font-path . --input language=python main.typ output/python.pdf && echo "Python PDF generado"
-      - run: typst compile --font-path . --input language=cpp main.typ output/cpp.pdf && echo "C++ PDF generado"
-      - run: typst compile --font-path . --input language=java main.typ output/java.pdf && echo "Java PDF generado"
+      - run: typst compile --input language=python docs/book/main.typ python.pdf && echo "Python PDF generado"
+      - run: typst compile --input language=cpp docs/book/main.typ cpp.pdf && echo "C++ PDF generado"
+      # - run: typst compile --font-path . --input language=java main.typ java.pdf && echo "Java PDF generado"
 
       # Subir los archivos generados al repositorio
       # Subir los archivos generados al repositorio

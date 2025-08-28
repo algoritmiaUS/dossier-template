@@ -1,0 +1,159 @@
+Recursión
+	Dividir y conquistar
+		Encontrar puntos interesantes en $N \log N$
+Análisis de algoritmos
+	Teorema maestro
+	Complejidad temporal amortizada
+Algoritmo voraz (Greedy)
+	Planificación
+	Suma máxima de subvector contiguo
+	Invariantes
+	Codificación Huffman
+Teoría de grafos
+	Grafos dinámicos (mantenimiento extra)
+	Búsqueda en anchura (BFS)
+	Búsqueda en profundidad (DFS)
+		* Árboles normales / Árboles DFS
+	Algoritmo de Dijkstra
+	AGM: Algoritmo de Prim
+	Bellman-Ford
+	Teorema de König y cobertura de vértices
+	Flujo máximo de costo mínimo
+	Conmutación de Lovász
+	Teorema de matrices de árboles
+	Emparejamiento máximo, grafos generales
+	Hopcroft-Karp
+	Teorema de matrimonio de Hall
+	Secuencias gráficas
+	Floyd-Warshall
+	Ciclos de Euler
+	Redes de flujo
+		* Caminos aumentantes
+		* Edmonds-Karp
+	Emparejamiento bipartito
+	Cobertura mínima de caminos
+	Ordenamiento topológico
+	Componentes fuertemente conectados
+	2-SAT
+	Vértices de corte, aristas de corte y componentes biconectadas
+	Coloración de aristas
+		* Árboles
+	Coloración de vértices
+		* Grafos bipartitos (=> árboles)
+		* $3^n$ (caso especial de set cover)
+	Diámetro y centroide
+	$k$-ésimo camino más corto
+	Ciclo más corto
+Programación dinámica
+	Mochila
+	Cambio de monedas
+	Subsecuencia común más larga
+	Subsecuencia creciente más larga
+	Número de caminos en un DAG
+	Camino más corto en un DAG
+	Programación dinámica sobre intervalos
+	Programación dinámica sobre subconjuntos
+	Programación dinámica sobre probabilidades
+	Programación dinámica sobre árboles
+	$3^n$ set cover
+	Dividir y conquistar
+	Optimización de Knuth
+	Optimización de convex hull
+	RMQ (Sparse Table o saltos $2^k$)
+	Ciclo bitónico
+	Particionamiento logarítmico (loop sobre el más restringido)
+Combinatoria
+	Cálculo de coeficientes binomiales
+	Principio del palomar
+	Inclusión/exclusión
+	Números de Catalan
+	Teorema de Pick
+Teoría de números
+	Partes enteras
+	Divisibilidad
+	Algoritmo euclidiano
+	Aritmética modular
+		* Multiplicación modular
+		* Inversos modulares
+		* Exponenciación modular por cuadrados
+	Teorema chino del resto
+	Pequeño teorema de Fermat
+	Teorema de Euler
+	Función Phi
+	Número de Frobenius
+	Reciprocidad cuadrática
+	Pollard-Rho
+	Miller-Rabin
+	Levantamiento de Hensel
+	Saltos de raíces de Vieta
+Teoría de juegos
+	Juegos combinatorios
+	Árboles de juego
+	Minimax
+	Nim
+	Juegos sobre grafos
+	Juegos sobre grafos con ciclos
+	Números de Grundy
+	Juegos bipartitos sin repetición
+	Juegos generales sin repetición
+	Poda alfa-beta
+Teoría de la probabilidad
+Optimización
+	Búsqueda binaria
+	Búsqueda ternaria
+	Unimodalidad y funciones convexas
+	Búsqueda binaria sobre derivadas
+Métodos numéricos
+	Integración numérica
+	Método de Newton
+	Búsqueda de raíces con búsqueda binaria/ternaria
+	Búsqueda de la sección áurea
+Matrices
+	Eliminación gaussiana
+	Exponenciación por cuadrados
+Ordenamiento
+	Radix sort
+Geometría
+	Coordenadas y vectores
+		* Producto cruz
+		* Producto escalar
+	Convex hull
+	Corte de polígonos
+	Par más cercano
+	Compresión de coordenadas
+	Quadtrees
+	KD-trees
+	Todas las intersecciones segmento-segmento
+Barrido (Sweeping)
+	Discretización (convertir en eventos y barrer)
+	Barrido por ángulos
+	Barrido de líneas
+	Segundas derivadas discretas
+Cadenas (Strings)
+	Subcadena común más larga
+	Subsecuencias palíndromas
+	Knuth-Morris-Pratt
+	Tries
+	Hashes polinomiales rodantes
+	Array de sufijos
+	Árbol de sufijos
+	Aho-Corasick
+	Algoritmo de Manacher
+	Listas de posiciones de letras
+Búsqueda combinatoria
+	Meet in the middle
+	Fuerza bruta con poda
+	Mejor primero (A*)
+	Búsqueda bidireccional
+	DFS/A* con profundización iterativa
+Estructuras de datos
+	LCA (saltos $2^k$ en árboles en general)
+	Técnica pull/push en árboles
+	Descomposición heavy-light
+	Descomposición por centroides
+	Propagación perezosa (Lazy propagation)
+	Árboles auto-balanceados
+	Convex hull trick (wcipeg.com/wiki/Convex_hull_trick)
+	Colas/Stacks monotónicos / colas deslizantes
+	Cola deslizante usando 2 stacks
+	Segment tree persistente

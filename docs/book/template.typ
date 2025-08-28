@@ -16,12 +16,12 @@
     flipped: flipped
   )
   
-  set text(font: "Arial", lang: "es", size: 10pt)
+  set text(lang: "es", size: 10pt) // font: "Arial", 
   
   // Title row.
   align(center)[
     #v(5.5cm)
-    #image("logo-US.png", width: 100pt)
+    #image("../assets/logo-US.png", width: 100pt)
     #block(text(2em, university))
     #block(text(2.5em, team_name))
     #block(text(2em, members.join(", ")))
