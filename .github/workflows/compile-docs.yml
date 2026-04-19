@@ -1,31 +1,60 @@
-name: Verificación y compilación de dossier
-on: push
+name: Dossier — tests, PDF artifacts, releases
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  validate-and-render:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: typst-community/setup-typst@v4
-        with:
-          cache-dependency-path: requirements.typ
-      
-      - name: Correr Stress Tests
+
+      - name: Run stress tests
         run: make test
 
-      - name: Generar Documentos PDF
+      - name: Compile Typst PDFs
         run: |
           make pdf-cpp
           make pdf-python
 
-      # Subir los archivos generados si todo ha salido bien
-      - name: Subir archivos generados
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin
-          git checkout ${{ github.ref_name }}
-          git add python.pdf cpp.pdf
-          # Solo hacer commit si hay cambios reales para evitar bucles
-          git diff-index --quiet HEAD || git commit -m "chore: Actualizar PDFs (Auto-generado por CI)"
-          git push origin ${{ github.ref_name }}
+      - name: Upload PDF artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dossier-pdfs
+          path: |
+            cpp.pdf
+            python.pdf
+          if-no-files-found: error
+
+  release:
+    needs: build
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download PDF artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dossier-pdfs
+          path: release-assets
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release-assets/cpp.pdf
+            release-assets/python.pdf
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
