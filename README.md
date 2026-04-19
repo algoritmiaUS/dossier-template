@@ -1,38 +1,41 @@
+
+
 # 📖 Dossier CAUS  
 
 Este dossier es la plantilla oficial del **Club de Algoritmia de la Universidad de Sevilla** para competiciones de programación en **Python**. En el futuro, planeamos extenderlo a más lenguajes.  
 
 Está escrito en [Typst](https://typst.app/), una alternativa a LaTeX desarrollada en Rust, elegida por su velocidad y eficiencia. Optamos por Typst en lugar de LaTeX debido al alto coste computacional de las plantillas tradicionales.  
 
-## 
+
+## Estructura de directorios
 
 ```
 dossier-template/
-├── Makefile                 # Automatiza 'make test' y 'make pdf'
+├── Makefile                 # Automatiza tareas de compilación, pruebas, etc.
 ├── stress-tests/            # Directorio de pruebas
 │   ├── cpp/
-│   │   ├── FenwickTree.cpp
-│   │   └── ...
 │   └── python/
-│       ├── fenwick_test.py
-│       └── ...
 ├── docs/                    # Todo lo que genera el dossier
 │   ├── assets/              # Logo e imágenes
 │   ├── book/                # Archivos Typst (main, template, utils)
-│   ├── cpp/                 # Solo el código C++ limpio (.h)
-│   └── python/              # Solo el código Python limpio (.py)
+│   ├── cpp/                 # Solo el código en C++
+│   └── python/              # Solo el código en Python 3
 └── .github/                 # CI/CD para compilar y testear
 ```
 
+
 ## 🚀 Cómo usar la plantilla  
 
-1. Clona este repositorio o descárgalo en formato `.zip` y descomprímelo. 
-3. Abre tu editor de texto favorito (en este caso usaremos como ejemplo VS Code)
-3. Descarga la extensión [Tinymist](https://github.com/Myriad-Dreamin/tinymist). Está disponible para VS Code y en editores como NVIM, EMACS, Sublime Text, entre otros.
-4. Editar tu proyecto, para ver las visualizaciones, en la esquina superior derecha, pulsar el botón `Tyspt Preview`, os abrirá una pestaña con la visualización en tiempo real.
-5. Para cambiar tu lenguaje de programación preferido en el fichero `main.typ` solamente cambiar la linea `let value = sys.inputs.at("language", default: "python")`` por el lenguaje por defecto 
+Recomendamos utilizar la extensión [Tinymist](https://github.com/Myriad-Dreamin/tinymist). Está disponible para VS Code, NVIM, EMACS y Sublime Text entre otros. Gracias a esta extensión podrás compilar los documentos y contarás con una vista previa en tiempo real mientras editas el código. En el caso de VS Code esto se consigue al pulsar el botón `Tyspt Preview` en la esquina superior derecha.
 
-![1](assets/local-example.png)
+![Captura de pantalla del renderizado en tiempo real en Visual Studio Code](assets/local-example.png)
+
+
+## 🛠️ CI (GitHub Actions)
+
+Cada **push** o **pull request** al repositorio ejecuta los *stress tests*, compila los PDF con Typst y sube los resultados como **artefacto** de la ejecución del workflow.
+
+Los PDF **no se versionan** en el repositorio. Para publicar una versión estable, crea y sube un **tag**. El mismo workflow adjuntará `cpp.pdf` y `python.pdf` a una nueva [**Release**](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases) de GitHub asociada a ese tag.
 
 ## 📜 Licencia  
 
