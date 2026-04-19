@@ -1,7 +1,7 @@
-# Árbol de Búsqueda Binaria (BST)
-#Permiten buscar elementos en ellos en tiempo logarítmico. Esencialmente es como realizar una búsqueda binaria
-# en una lista ordenada. Sus elementos deben tener un orden parcial.
-
+"""
+Description: Árbol de Búsqueda Binaria. Permiten buscar elementos en ellos en tiempo logarítmico. Esencialmente es como realizar una búsqueda binaria
+en una lista ordenada. Sus elementos deben tener un orden parcial.
+"""
 class Node:
     def __init__(self, key):
         self.key = key
@@ -58,7 +58,8 @@ class BST:
                     return node.left
                 
                 # Caso 2: El nodo tiene dos hijos.
-                # Encontramos el sucesor inorden (el nodo más pequeño en el subárbol derecho).
+                # Encontramos el sucesor inorden
+                # (el nodo más pequeño en el subárbol derecho).
                 temp = _min_value_node(node.right)
                 
                 # Copiamos el contenido del sucesor inorden a este nodo.

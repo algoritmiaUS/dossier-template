@@ -1,6 +1,7 @@
-#Es una estructura empleada para optimizar operaciones sobre rangos (segmentos) de un array.
+"""
+Description: Es una estructura empleada para optimizar operaciones sobre rangos (segmentos) de un array.
 # Hay que modificar las cosas que son necesarias
-
+"""
 class Node(object):
     def __init__(self, start, end):
         self.start = start

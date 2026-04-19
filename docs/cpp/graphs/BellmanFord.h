@@ -1,3 +1,10 @@
+/**
+ * Date: 2026-04-19
+ * Description: Calcula los caminos más cortos desde $s$ en un grafo que puede tener aristas con pesos negativos.
+   Los nodos inalcanzables obtienen `dist = inf`; los nodos alcanzables a través de ciclos de peso negativo obtienen `dist = -inf`.
+   Se asume que $V^2 dot.op max|w_i | < 2^63$.
+ */
+
 #pragma once
 
 const ll inf = LLONG_MAX;

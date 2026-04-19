@@ -1,17 +1,24 @@
-name: Compilar Documentos en pdf
+name: Verificación y compilación de dossier
 on: push
 jobs:
-  render-paper:
+  validate-and-render:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: typst-community/setup-typst@v4
         with:
           cache-dependency-path: requirements.typ
-      # Compilar PDFs indicando la raíz del proyecto
-      - run: typst compile --root . --input language=python docs/book/main.typ python.pdf && echo "Python PDF generado"
-      - run: typst compile --root . --input language=cpp docs/book/main.typ cpp.pdf && echo "C++ PDF generado"
-      # Subir los archivos generados al repositorio
+      
+      - name: Correr Stress Tests
+        run: make test
+
+      - name: Generar Documentos PDF
+        run: |
+          make pdf-cpp
+          make pdf-python
+
+      # Subir los archivos generados si todo ha salido bien
       - name: Subir archivos generados
         run: |
           git config --global user.name "github-actions[bot]"
@@ -19,5 +26,6 @@ jobs:
           git fetch origin
           git checkout ${{ github.ref_name }}
           git add python.pdf cpp.pdf
-          git commit -m "Actualizar PDFs generados"
+          # Solo hacer commit si hay cambios reales para evitar bucles
+          git diff-index --quiet HEAD || git commit -m "chore: Actualizar PDFs (Auto-generado por CI)"
           git push origin ${{ github.ref_name }}

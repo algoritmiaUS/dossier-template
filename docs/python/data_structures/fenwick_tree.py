@@ -1,11 +1,9 @@
-# Fenwick Tree
-
-# Un árbol Fenwick funciona de manera similar a un árbol segmentado,
-# pero es menos potente, ya que la operación debe ser
-# inversible: suma, recuento de frecuencia... funcionan, pero min/-
-# max no. La única ventaja real es que es más rápido
-# de escribir y ocupa menos espacio (ambos son lineales).
-
+"""
+Description: Árbol de Fenwick (Binary Indexed Tree). Similar a un Segment Tree 
+pero más rápido de escribir y ocupa menos espacio ($O(N)$). Requiere que la 
+operación sea inversible (suma, frecuencia). No soporta min/max.
+Time: $O(\log N)$ para consultas y actualizaciones.
+"""
 class FenwickTree:
     def __init__(self, size):
         self.n = size

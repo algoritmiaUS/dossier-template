@@ -1,7 +1,7 @@
-// Clase para manejar puntos en el plano.
-// T puede ser, por ejemplo, double o long long.
-// Evite int. Sacado de KACTL
-
+/**
+ * Date: 2026-04-19
+ * Description: Clase para manejar puntos en el plano. T puede ser, por ejemplo, double o long long.
+**/
 #pragma once
 
 template <class T> int sgn(T x) { return (x > 0) - (x < 0); }

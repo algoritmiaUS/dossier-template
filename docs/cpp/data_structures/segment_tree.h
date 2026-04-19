@@ -1,7 +1,8 @@
-// Es una estructura empleada para optimizar
-// operaciones sobre rangos (segmentos) de un array.
-// Gracias a Dalopir (UCppM)
-
+/**
+ * Author: Dalopir (UCppM)
+ * Date: 2026-04-19
+ * Description: estructura empleada para optimizar operaciones sobre rangos (segmentos) de un array.
+ */
 // Funciones para configurar el segment tree
 template<typename T> struct Min {
     T neutral = INT_MAX;
@@ -30,8 +31,7 @@ template<typename T> struct Mul {
 };
 
 // Configuracion del segment tree
-F para las queries, G para las actualizaciones
-```cpp
+// F para las queries, G para las actualizaciones
 template<typename T> struct STOP {
     using F = Max<T>; using G = Sum<T>;
     // d(g(a, b, ...), x, c): Distribute g over f

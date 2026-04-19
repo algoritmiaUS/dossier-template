@@ -1,10 +1,7 @@
-# Convex Hull (Envolvente Convexa)
-#
-# El objetivo de este algoritmo es encontrar los puntos de un conjunto
-# que forman el perímetro de la figura convexa más pequeña que contiene
-# a todos los demás puntos. Piensa en ello como si estuvieras estirando
-# una banda elástica alrededor de un conjunto de clavos. Los puntos
-# tocados por la banda elástica son la envolvente convexa. 
+"""
+Description: Calcula el perímetro mínimo que contiene un conjunto de puntos. Cambiar `< 0` a `<= 0` para incluir puntos colineales.
+Time: $O(N \log N)$ por el ordenamiento.
+"""
 
 def convex_hull(points):
     if len(points) <= 1:

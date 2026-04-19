@@ -1,3 +1,7 @@
+/**
+ * Date: 2026-04-19
+ * Description: Recorre todos los nodos de un grafo o árbol nivel por nivel.
+ */
 vector<vector<int>> adj;  // adjacency list representation
 int n; // number of nodes
 int s; // source vertex

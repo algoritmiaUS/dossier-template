@@ -1,3 +1,9 @@
+/**
+ * Date: 2026-04-19
+ * Description: Algoritmo de flujo máximo con complejidad garantizada $O(V E^2)$.
+ * Para obtener los valores de flujo de las aristas, compara las capacidades antes y después,
+ * y toma solo los valores positivos.
+ */
 #pragma once
 
 template<class T> T edmondsKarp(vector<unordered_map<int, T>>&

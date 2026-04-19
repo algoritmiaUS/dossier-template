@@ -1,6 +1,8 @@
-# Criba de Erastótenes
-# Algoritmo para generar números primos
-# Sacado de: https://community.lambdatest.com/t/how-can-i-optimize-the-sieve-of-eratosthenes-in-python-for-larger-limits/34557/3
+"""
+Description: Algoritmo de la Criba de Eratóstenes.
+Time: O(N log log N)
+Sacado de: https://community.lambdatest.com/t/how-can-i-optimize-the-sieve-of-eratosthenes-in-python-for-larger-limits/34557/3
+"""
 
 def eratosthene(limit):
     primes = [2, 3, 5]

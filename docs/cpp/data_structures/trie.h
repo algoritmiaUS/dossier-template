@@ -1,5 +1,3 @@
-// Trie construido en base
-// al código de Los BoquerO(n³) UNED
 class TrieNode {
 public:
     std::unordered_map<char, TrieNode*> children;

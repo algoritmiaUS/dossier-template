@@ -1,5 +1,8 @@
+"""
+Description: Algoritmo de flujo con complejidad garantizada $O(V E^2)$.  
+Para obtener los valores de flujo de las aristas, compara las capacidades antes y después, y toma solo los valores positivos.
+"""
 from collections import deque
-
 def _bfs(capacity, source, sink, parent):
     queue = deque([source])
     visited = set([source])

@@ -1,6 +1,8 @@
-//Exponenciación rápida
-//Calcula $a^b mod m$ de manera eficiente.
-// https://cp-algorithms.com/algebra/binary-exp.html
+/**
+ * Date: 2026-04-19
+ * Description: Calcula $a^b mod m$ de manera eficiente.
+ */
+
 long long binpow(long long a, long long b, long long m) {
     a %= m;
     long long res = 1;

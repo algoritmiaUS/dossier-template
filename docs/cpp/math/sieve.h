@@ -1,5 +1,9 @@
-// Criba de Erastótenes: Algoritmo para generar
-// números primos. Gracias a noahdris (UCppM)
+/**
+ * Author: noahdris (UCppM)
+ * Date: 2026-04-19
+ * Description: Calcula el GCD de dos números.
+ * Time: O(log n)
+ */
 int N = 30;
 vector<bool> es_primo(N+1,true);
 vector<int> primos;

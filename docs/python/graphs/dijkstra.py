@@ -1,17 +1,12 @@
+"""
+Description: Se utiliza para encontrar el camino más corto desde un nodo de inicio hasta
+todos los demás nodos en un grafo ponderado.
+"""
 from heapq import heappush, heappop
-
 def dijkstra(
     al: List[List[Tuple[int, int]]], s: int,
     s: int,
 ):
-    """ 
-    Ejecuta Dijkstra desde el nodo `s` en un grafo
-    con lista de adyacencias `al`.
-
-    // Sacado de https://github.com/stevenhalim/cpbook-code/blob/master/ch4/sssp/dijkstra.py
-
-    """
-
     dist = [float("inf")] * len(al)
     dist[s] = 0
     pq = [(0, s)]

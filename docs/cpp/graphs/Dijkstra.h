@@ -1,3 +1,7 @@
+/**
+ * Date: 2026-04-19
+ * Description: algoritmo para encontrar el camino más corto desde un nodo de inicio hasta todos los demás nodos en un grafo ponderado.
+ */
 const int INF = 1000000000;
 vector<vector<pair<int, int>>> adj;
 

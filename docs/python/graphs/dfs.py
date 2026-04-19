@@ -1,3 +1,6 @@
+"""
+Description: Recorre todos los nodos de un grafo o árbol profundizando en cada rama antes de retroceder.
+"""
 def dfs_iterative(graph, start, seen):
     seen[start] = True
     to_visit = [start]

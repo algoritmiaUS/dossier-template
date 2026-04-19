@@ -1,3 +1,6 @@
+"""
+Description: Recorre todos los nodos de un grafo o árbol nivel por nivel.
+"""
 from collections import deque
 
 def bfs(graph, start=0):
