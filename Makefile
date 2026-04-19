@@ -52,3 +52,4 @@ test: test-cpp test-python
 
 clean:
 	rm -rf $(BUILD_DIR)
+	rm -f cpp.pdf python.pdf
