@@ -26,9 +26,8 @@ int main() {
 
         assert(((long long)a*b)/__gcd(a, b) == lcm(a, b));
         
-        cout << "Test " << t << " superado con éxito. (a = " << a << " b = " << b << ")" << endl;
     }
 
-    cout << "¡Todos los tests de C++ pasaron con éxito!" << endl;
+    cout << "¡Todos los tests de C++ para lcm pasaron con éxito!" << endl;
     return 0;
 }

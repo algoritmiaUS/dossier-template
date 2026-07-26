@@ -1,5 +1,5 @@
 #pragma once
-#include "Point.h"
+#include "point.h"
 typedef Point<ll> P;
 vector<P> convexHull(vector<P> pts) {
 	if (sz(pts) <= 1) return pts;

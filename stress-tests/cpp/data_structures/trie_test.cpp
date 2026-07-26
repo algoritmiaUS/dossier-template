@@ -63,6 +63,6 @@ int main() {
         assert(trie.countWordsStartingWith(pref) == count_expected);
     }
 
-    cout << "¡Todos los tests de C++ pasaron con éxito!" << endl;
+    cout << "¡Todos los tests de C++ para trie pasaron con éxito!" << endl;
     return 0;
 }

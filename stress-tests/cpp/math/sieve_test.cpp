@@ -58,9 +58,8 @@ int main() {
             }
         }
         
-        cout << "Test " << t << " superado con éxito. (N = " << n << ")" << endl;
     }
 
-    cout << "¡Todos los tests de C++ pasaron con éxito!" << endl;
+    cout << "¡Todos los tests de C++ para Criba de Eratóstenes pasaron con éxito!" << endl;
     return 0;
 }
