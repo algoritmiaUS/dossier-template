@@ -53,33 +53,40 @@ static int randomLit(mt19937& rng, int n) {
 }
 
 static void test_unsat_case() {
+	// TEST 1: Problema insatisfacible
+	// Forzar: variable 0 debe ser verdadera y falsa al mismo tiempo
 	TwoSat ts(1);
-	ts.setValue(0);
-	ts.setValue(~0);
-	assert(!ts.solve());
+	ts.setValue(0);    // Variable 0 = true
+	ts.setValue(~0);   // Variable 0 = false (contradicción)
+	assert(!ts.solve());  // Debe ser insatisfacible
 }
 
 static void test_basic_case() {
-	// (a | b) & (a | ~b) & (~c | ~d)
+	// TEST 2: Fórmula pequeña: (a|b) & (a|¬b) & (¬c|¬d)
+	// De las dos primeras: a debe ser true
+	// De la tercera: c y d no pueden ser simultáneamente true
 	TwoSat ts(4);
-	ts.either(0, 1);
-	ts.either(0, ~1);
-	ts.either(~2, ~3);
+	ts.either(0, 1);     // a OR b
+	ts.either(0, ~1);    // a OR NOT b
+	ts.either(~2, ~3);   // NOT c OR NOT d
 	assert(ts.solve());
-	assert(ts.values[0] == 1);
-	assert(ts.values[2] == 0);
-	assert(ts.values[3] == 0);
+	assert(ts.values[0] == 1);  // a = true (forzado)
+	assert(ts.values[2] == 0);  // c = false (uno de los dos)
+	assert(ts.values[3] == 0);  // d = false (restricción satisfecha)
 }
 
 static void test_at_most_one() {
+	// TEST 3: Restricción "at most one" - como máximo una literal es verdadera
+	// Ejecutar 200 iteraciones con instancias aleatorias
 	mt19937 rng(123456);
 	for (int it = 0; it < 200; ++it) {
-		int n = uniform_int_distribution<int>(1, 7)(rng);
-		int k = uniform_int_distribution<int>(1, n)(rng);
+		int n = uniform_int_distribution<int>(1, 7)(rng);      // Variables aleatorias
+		int k = uniform_int_distribution<int>(1, n)(rng);      // Literales a restringir
 		vector<int> vars(n);
 		iota(vars.begin(), vars.end(), 0);
 		shuffle(vars.begin(), vars.end(), rng);
 		vector<int> lits;
+		// Seleccionar k variables distintas y asignarles signos aleatorios
 		for (int i = 0; i < k; ++i) {
 			int var = vars[i];
 			lits.push_back(uniform_int_distribution<int>(0, 1)(rng) ? var : ~var);
@@ -88,21 +95,26 @@ static void test_at_most_one() {
 		TwoSat ts(n);
 		ts.atMostOne(lits);
 		assert(ts.solve());
+		
+		// Contar cuántas literales se hacen verdaderas
 		int count = 0;
 		for (int lit : lits) count += (ts.values[max(lit, ~lit)] == (lit >= 0));
-		assert(count <= 1);
+		assert(count <= 1);  // Verificar restricción
 	}
 }
 
 static void test_random_bruteforce() {
+	// TEST 4: Comparación con fuerza bruta para instancias pequeñas
+	// Generar 250 fórmulas aleatorias y verificar contra solución correcta
 	mt19937 rng(20260726);
 	for (int it = 0; it < 250; ++it) {
-		int n = uniform_int_distribution<int>(1, 8)(rng);
-		int m = uniform_int_distribution<int>(1, 20)(rng);
+		int n = uniform_int_distribution<int>(1, 8)(rng);       // Hasta 8 variables
+		int m = uniform_int_distribution<int>(1, 20)(rng);      // Hasta 20 cláusulas
 		vector<pair<int, int>> clauses;
 		clauses.reserve(m);
 
 		TwoSat ts(n);
+		// Generar m cláusulas aleatorias
 		for (int i = 0; i < m; ++i) {
 			int a = randomLit(rng, n);
 			int b = randomLit(rng, n);
@@ -110,10 +122,13 @@ static void test_random_bruteforce() {
 			ts.either(a, b);
 		}
 
+		// Probar con fuerza bruta (exponencial, pero válido para n <= 8)
 		vector<int> witness;
 		bool brute = bruteForceSat(n, clauses, &witness);
+		// Comparar con solución de 2-SAT
 		bool solved = ts.solve();
-		assert(solved == brute);
+		assert(solved == brute);  // Ambas deben coincidir
+		// Si es satisfacible, verificar que la solución es válida
 		if (solved) checkAssignment(ts, clauses);
 	}
 }

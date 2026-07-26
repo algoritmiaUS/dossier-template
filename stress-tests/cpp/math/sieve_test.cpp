@@ -26,35 +26,41 @@ int main() {
     cout << "Iniciando stress test para Criba de Eratóstenes (C++)..." << endl;
 
     // Realizamos múltiples tests para asegurar consistencia
-    int num_tests = 30; 
+    // Generar 30 números aleatorios en [1, 1e6) y verificar criba en cada uno
+    int num_tests = 30;
     
     for (int t = 1; t <= num_tests; t++) {
         int n = rd() % MAXN + 1;
         
-        // Llamamos a tu implementación
+        // Callable la criba para calcular todos los primos hasta n
         criba(n);
         
-        // 1. Verificamos el vector booleano 'es_primo'
+        // TEST 1: Verificar el vector booleano 'es_primo'
+        // Comparar cada elemento es_primo[i] con verificación naïve is_prime_naive(i)
+        // Ambas funciones deben coincidir completamente en determinar primalidad
         int primes_expected = 0;
         for (int i = 2; i <= n; i++) {
             bool expected = is_prime_naive(i);
-            // Comparamos tu criba con la función ingenua
-            assert(es_primo[i] == expected);
+            assert(es_primo[i] == expected);  // Validar coherencia bit a bit
             
             if (expected) {
-                primes_expected++;
+                primes_expected++;  // Contar primos encontrados
             }
         }
         
-        // 2. Verificamos el tamaño del vector 'primos'
+        // TEST 2: Verificar el tamaño del vector 'primos'
+        // El vector de primos debe contener exactamente 'primes_expected' elementos
+        // Esto valida que la criba no omitió ni agregó primos incorrectamente
         assert((int)primos.size() == primes_expected);
         
-        // 3. Verificamos el contenido y el orden del vector 'primos'
+        // TEST 3: Verificar contenido y orden del vector 'primos'
+        // Para cada primo en el vector:
+        // - Verificar que es efectivamente primo (validación con is_prime_naive)
+        // - Verificar que está en orden estrictamente creciente
         for (size_t i = 0; i < primos.size(); i++) {
-            assert(is_prime_naive(primos[i]));
-            // Aseguramos que la lista sea estrictamente creciente
+            assert(is_prime_naive(primos[i]));     // Cada elemento debe ser primo
             if (i > 0) {
-                assert(primos[i] > primos[i - 1]);
+                assert(primos[i] > primos[i - 1]); // Orden creciente estricto
             }
         }
         

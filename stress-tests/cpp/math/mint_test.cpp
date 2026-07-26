@@ -24,37 +24,49 @@ int main() {
     cout << "Iniciando stress test para mint (C++)..." << endl;
 
     // Realizamos múltiples tests para asegurar consistencia
-    int num_tests = 30; 
+    // Generar 30 pares aleatorios de números: a ∈ [1, 1e6), b ∈ [1, 1e9), a%MOD ≤ b%MOD
+    int num_tests = 30;
     
     for (int t = 1; t <= num_tests; t++) {
         int a = rd() % MAXA + 1;
         int b = rd() % MAXB + 1;
-        while(b == a) b = rd() % MAXB + 1;
-        if (a%MOD > b%MOD)swap(a, b);
+        while(b == a) b = rd() % MAXB + 1;        // Asegurar a ≠ b
+        if (a%MOD > b%MOD) swap(a, b);            // Asegurar a%MOD ≤ b%MOD
 
         Mint aM = a, bM = b;
-        // 1. Test de igualdad
+        
+        // TEST 1: Operador de igualdad (==)
+        // Verificar que Mint(a) == a (comparación con int)
         assert(aM == a);
 
-        // 2. Test de menor que
+        // TEST 2: Operador menor que (<)
+        // Verificar que aM < bM (porque a%MOD ≤ b%MOD por construcción)
         assert(aM < bM);
 
-        // 3. Test de mayor que
+        // TEST 3: Operador mayor que (>)
+        // Verificar que bM > aM (relación inversa)
         assert(bM > aM);
 
-        // 4. Test de suma
+        // TEST 4: Suma modular (+)
+        // Verificar que (aM + bM) = (a + b) % MOD
         assert(aM+bM == (a+b)%MOD);
 
-        // 5. Test de resta
+        // TEST 5: Resta modular (-)
+        // Verificar que (aM - bM) = (a - b) % MOD (con ajuste de signo)
         assert(aM-bM == (a-b)%MOD);
 
-        // 6. Test de multiplicación
+        // TEST 6: Multiplicación modular (*)
+        // Verificar que (aM * bM) = (a * b) % MOD (usando long long para evitar overflow)
         assert(aM*bM == ((ll)a*b)%MOD);
 
-        // 7. Test de inverso
+        // TEST 7: Inverso modular (inv())
+        // Verificar que aM * aM.inv() = 1 (mod MOD)
+        // Esto verifica que inv() calcula correctamente el inverso multiplicativo
         assert(aM * aM.inv() == 1);
 
-        // 8. Test de potencia
+        // TEST 8: Potencia modular (pow())
+        // Verificar que bM.pow(a) = b^a (mod MOD)
+        // Comparar con implementación naïve de potencia para validar
         assert(bM.pow(a) == potencia(b, a));
         
     }
