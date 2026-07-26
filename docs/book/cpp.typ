@@ -15,7 +15,7 @@
 #codeblock("../cpp/math/gcd.h", "cpp")
 #codeblock("../cpp/math/lcm.h", "cpp")
 #codeblock("../cpp/math/sieve.h", "cpp")
-#codeblock("../cpp/math/binary-exp.h", "cpp")
+#codeblock("../cpp/math/mint.h", "cpp")
 
 *Coeficientes Multinomiales*
 

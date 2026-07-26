@@ -1,3 +1,3 @@
-int lcm(int a, int b) {
-    return a / gcd(a, b) * b;  // evitar overflow
+ll lcm(int a, int b) {
+    return (ll)a / gcd(a, b) * b;  // evitar overflow
 }

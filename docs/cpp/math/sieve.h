@@ -1,15 +1,18 @@
 /**
- * Author: noahdris (UCppM)
- * Date: 2026-04-19
- * Description: Calcula el GCD de dos números.
- * Time: O(log n)
+ * Date: 2026-07-09
+ * Description: Calcula los números primos menores o iguales que n
+ * Time: O(n log log n)
  */
-int N = 30;
-vector<bool> es_primo(N+1,true);
+#include <bits/stdc++.h>
+vector<bool> es_primo;
 vector<int> primos;
-for(int i = 2; i <= N; i++){
-    if(es_primo[i]){
-        primos.push_back(i);
-        for(int j = i; j*i <= N; j++) es_primo[j*i] = false;
+void criba(int N) {
+    es_primo.assign(N+1, true);
+    primos.clear();
+    for(int i = 2; i <= N; i++){
+        if(es_primo[i]){
+            primos.push_back(i);
+            for(int j = i; (long long) j*i <= N; j++) es_primo[j*i] = false;
+        }
     }
 }
